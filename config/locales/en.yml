@@ -1,0 +1,50 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  spree:
+    blogs: Blogs
+    blog_categories: Categories
+    blog_posts: Posts
+    blog_comments: Comments
+
+    new_blog: New blog
+    edit_blog: Edit blog
+
+    new_blog_category: New category
+    edit_blog_category: Edit category
+
+    new_blog_post: New post
+    edit_blog_post: Edit post
+
+    edit_blog_comment: Edit comment
+
+    blog_name: Name
+    blog_slug: Slug
+    blog_description: Description
+    blog_posts_count: Posts count
+
+    blog_category_name: Name
+    blog_category_posts_count: Posts count
+    blog_category_slug: Slug
+
+    blog_post_title: Title
+    blog_post_slug: Slug
+    blog_post_posted_at: Posted at
+    blog_post_state: State
+    blog_post_teaser: Teaser
+    blog_post_body: Body
+    blog_post_author: Author
+    blog_post_category: Category
+    blog_post_comments_count: Comments
+    blog_post_featured: Featured
+    blog_post_avatar: Avatar
+
+    blog_comment_author: Author
+    blog_comment_comment: Comment
+    blog_comment_created_at: Posted at
+
+    flash:
+      blog_comment:
+        saved: Your comment has been added
+        failed: Your comment could not be saved

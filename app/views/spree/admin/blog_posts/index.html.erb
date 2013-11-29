@@ -1,0 +1,55 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:blog_posts) %> - <%= @blog.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back), spree.admin_blogs_path, icon: 'icon-arrow-left' %>
+  </li>
+  <li>
+    <%= button_link_to Spree.t(:new_blog_post), spree.new_admin_blog_blog_post_path(@blog), icon: 'icon-plus' %>
+  </li>
+<% end %>
+
+<% unless @blog_posts.any? %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_results) %>
+  </div>
+<% else %>
+  <table class="index">
+    <colgroup>
+      <col style="width: 45%">
+      <col style="width: 10%">
+      <col style="width: 10%">
+      <col style="width: 10%">
+      <col style="width: 10%">
+      <col style="width: 15%">
+    </colgroup>
+    <thead>
+      <tr data-hook="blog_posts_header">
+        <th><%= Spree.t(:blog_post_title) %></th>
+        <th><%= Spree.t(:blog_post_category) %></th>
+        <th><%= Spree.t(:blog_post_posted_at) %></th>
+        <th><%= Spree.t(:blog_post_comments_count) %></th>
+        <th><%= Spree.t(:blog_post_state) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blog_posts.each do |blog_post|%>
+        <tr id="<%= spree_dom_id blog_post %>" data-hook="blog_post_row" class="<%= cycle('odd', 'even')%> <%= blog_post.deleted? ? 'action-remove' : '' %>">
+          <td><%= blog_post.title %></td>
+          <td><%= blog_post.category ? blog_post.category.name : '-' %></td>
+          <td><%= l blog_post.posted_at, format: :short %></td>
+          <td><%= blog_post.comments.count %></td>
+          <td><%= blog_post.state.humanize if blog_post.state %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'icon-comments', Spree.t(:blog_comments), spree.admin_blog_post_blog_comments_path(blog_post.id), no_text: true %>
+            <%= link_to_with_icon 'icon-edit', Spree.t(:edit), spree.edit_admin_blog_post_path(blog_post.id), no_text: true %>
+            <%= link_to_delete blog_post, no_text: true, url: spree.admin_blog_post_path(blog_post.id) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

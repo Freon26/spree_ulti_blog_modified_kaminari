@@ -1,0 +1,45 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:blog_comments) %> - <%= @blog_post.title %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back), spree.admin_blog_blog_posts_path(@blog_post.blog), icon: 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<% unless @blog_post.comments.any? %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_results) %>
+  </div>
+<% else %>
+  <table class="index">
+    <colgroup>
+      <col style="width: 20%">
+      <col style="width: 50%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+    </colgroup>
+    <thead>
+      <tr data-hook="blog_comments_header">
+        <th><%= Spree.t(:blog_comment_author) %></th>
+        <th><%= Spree.t(:blog_comment_comment) %></th>
+        <th><%= Spree.t(:blog_comment_created_at) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blog_post.comments.each do |comment|%>
+        <tr id="<%= spree_dom_id comment %>" data-hook="comment_row" class="<%= cycle('odd', 'even')%>">
+          <td><%= comment.author.name || comment.author.email %></td>
+          <td><%= comment.comment %></td>
+          <td><%= l comment.created_at, format: :short %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'icon-edit', Spree.t(:edit), spree.edit_admin_blog_comment_path(comment), no_text: true %>
+            <%= link_to_delete comment, no_text: true, url: spree.admin_blog_comment_path(comment) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

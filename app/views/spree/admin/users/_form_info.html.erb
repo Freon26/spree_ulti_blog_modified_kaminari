@@ -1,0 +1,42 @@
+<div class="alpha omega ten columns">
+  <%= f.field_container :name do %>
+    <%= f.label :name, Spree.t(:name) %>
+    <%= f.text_field :name, class: 'fullwidth' %>
+    <%= f.error_message_on :name %>
+  <% end %>
+</div>
+<div class="alpha omega ten columns">
+  <%= f.field_container :about do %>
+    <%= f.label :about, Spree.t(:about) %>
+    <%= f.text_area :about, class: 'fullwidth' %>
+    <%= f.error_message_on :about %>
+  <% end %>
+</div>
+<div class="alpha five columns">
+  <%= f.field_container :twitter do %>
+    <%= f.label :twitter, Spree.t(:twitter) %>
+    <%= f.text_field :twitter, class: 'fullwidth' %>
+    <%= f.error_message_on :twitter %>
+  <% end %>
+</div>
+<div class="omega five columns">
+  <%= f.field_container :facebook do %>
+    <%= f.label :facebook, Spree.t(:facebook) %>
+    <%= f.text_field :facebook, class: 'fullwidth' %>
+    <%= f.error_message_on :facebook %>
+  <% end %>
+</div>
+<div class="alpha five columns">
+  <%= f.field_container :google_plus do %>
+    <%= f.label :google_plus, Spree.t(:google_plus) %>
+    <%= f.text_field :google_plus, class: 'fullwidth' %>
+    <%= f.error_message_on :google_plus %>
+  <% end %>
+</div>
+<div class="omega five columns">
+  <%= f.field_container :skype do %>
+    <%= f.label :skype, Spree.t(:skype) %>
+    <%= f.text_field :skype, class: 'fullwidth' %>
+    <%= f.error_message_on :skype %>
+  <% end %>
+</div>

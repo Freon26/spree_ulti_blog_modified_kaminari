@@ -1,0 +1,22 @@
+<div data-hook="admin_blog_form_fields">
+  <div class="alpha sixteen columns">
+    <fieldset data-hook="blog" class=" no-border-bottom">
+      <legend align="center"><%= Spree.t(:general_settings) %></legend>
+      <div class="alpha omega sixteen columns">
+        <div data-hook="name" class="field">
+          <%= f.label :name, Spree.t(:blog_name) %>
+          <%= f.text_field :name, class: 'fullwidth' %>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="alpha omega sixteen columns">
+        <div data-hook="description" class="field">
+          <%= f.label :description, Spree.t(:blog_description) %>
+          <%= f.text_area :description, class: 'fullwidth' %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="clear"></div>
+</div>

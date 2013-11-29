@@ -1,0 +1,50 @@
+<div data-hook="admin_blog_post_form_fields">
+  <div class="alpha sixteen columns">
+    <fieldset data-hook="blog_post" class="no-border-bottom">
+      <legend align="center"><%= Spree.t(:general_settings) %></legend>
+      <div class="alpha omega eight columns">
+        <div data-hook="title" class="field">
+          <%= f.label :title, Spree.t(:blog_post_title) %>
+          <%= f.text_field :title, class: 'fullwidth' %>
+        </div>
+        <div data-hook="category" class="field">
+          <%= f.label :category, Spree.t(:blog_post_category) %>
+          <%= f.collection_select(:category_id, @blog_categories, :id, :name, { include_blank: true }, { class: 'select2 fullwidth' }) %>
+        </div>
+        <div data-hook="posted_at" class="field">
+          <%= f.label :posted_at, Spree.t(:blog_post_posted_at) %>
+          <%= f.datetime_select :posted_at, class: 'fullwidth' %>
+        </div>
+        <div data-hook="featured" class="field">
+          <%= f.check_box :featured %>
+          <%= f.label :featured, Spree.t(:blog_post_featured) %>
+        </div>
+        <div data-hook="avatar" class="field">
+          <%= f.label :avatar, Spree.t(:blog_post_avatar) %>
+          <%= f.file_field :avatar %>
+        </div>
+        <div data-hook="state" class="field">
+          <%= f.label :state, Spree.t(:blog_post_state) %>
+          <%= f.select(:state, %w(draft published deleted).map { |state| [state.humanize, state] }, {}, { class: 'select2 fullwidth' }) %>
+        </div>
+      </div>
+      <div class="omega eight columns">
+        <div data-hook="teaser" class="field">
+          <%= f.label :teaser, Spree.t(:blog_post_teaser) %>
+          <%= f.text_area :teaser, class: 'fullwidth' %>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset data-hook="blog_post_body" class="no-border-bottom">
+      <legend align="center"><%= Spree.t(:body) %></legend>
+      <div class="alpha omega sixteen columns">
+        <div data-hook="body" class="field">
+          <%= f.label :body, Spree.t(:blog_post_body) %>
+          <%= f.text_area :body, class: 'fullwidth' %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="clear"></div>
+</div>

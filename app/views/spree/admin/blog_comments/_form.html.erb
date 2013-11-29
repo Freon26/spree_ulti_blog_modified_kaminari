@@ -1,0 +1,21 @@
+<div data-hook="admin_blog_comment_form_fields">
+  <div class="alpha sixteen columns">
+    <fieldset data-hook="blog_comment" class="no-border-bottom">
+      <legend align="center"><%= Spree.t(:general_settings) %></legend>
+      <div class="alpha eight columns">
+        <div data-hook="comment" class="field">
+          <%= f.label :comment, Spree.t(:blog_comment_comment) %>
+          <%= f.text_area :comment, class: 'fullwidth' %>
+        </div>
+      </div>
+      <div class="omega eight columns">
+        <div data-hook="author" class="field">
+          <%= f.label :author, Spree.t(:blog_comment_author) %>
+          <p class="fullwidth"><%= link_to @blog_comment.author.name, spree.admin_user_path(@blog_comment.author) %></p>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="clear"></div>
+</div>

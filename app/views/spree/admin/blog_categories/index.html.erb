@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:blog_categories) %> - <%= @blog.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back), spree.admin_blogs_path, icon: 'icon-arrow-left' %>
+  </li>
+  <li>
+    <%= button_link_to Spree.t(:new_blog_category), spree.new_admin_blog_blog_category_path(@blog), icon: 'icon-plus' %>
+  </li>
+<% end %>
+
+<% unless @blog_categories.any? %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_results) %>
+  </div>
+<% else %>
+  <table class="index">
+    <colgroup>
+      <col style="width: 35%">
+      <col style="width: 34%">
+      <col style="width: 10%">
+      <col style="width: 21%">
+    </colgroup>
+    <thead>
+      <tr data-hook="blog_categories_header">
+        <th><%= Spree.t(:blog_category_name) %></th>
+        <th><%= Spree.t(:blog_category_slug) %></th>
+        <th><%= Spree.t(:blog_category_posts_count) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blog_categories.each do |blog_category|%>
+        <tr id="<%= spree_dom_id blog_category %>" data-hook="blog_category_row" class="<%= cycle('odd', 'even')%>">
+          <td><%= blog_category.name %></td>
+          <td><%== blog_category.slug %></td>
+          <td><%= blog_category.posts.count %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'icon-edit', Spree.t(:edit), spree.edit_admin_blog_category_path(blog_category), no_text: true %>
+            <%= link_to_delete blog_category, no_text: true, url: spree.admin_blog_category_path(blog_category) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
